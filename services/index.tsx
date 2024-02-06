@@ -1,4 +1,4 @@
-import request, { gql } from "graphql-request"
+import request, {gql} from "graphql-request"
 
 export const getCrocsList = async() => {
 	const query = gql`
@@ -10,11 +10,11 @@ export const getCrocsList = async() => {
 			model
 			price
 			size
-			image {
-				id
-			}
 			publishedAt
 			updatedAt
+			image {
+				url
+			}
 		}
 	}
 	`
