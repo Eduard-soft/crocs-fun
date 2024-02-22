@@ -1,6 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const CrocsFiltersOption = () => {
+function CrocsFiltersOption({crocsList, setModel, setPrise, setSize}:any) {
+
+	const [modelList, setModelList]=useState<any>();
+	const [priceList, setPriceList] = useState<any>();
+	const [sizeList, setSizeList] = useState<any>();
+	const ModelSet=new Set()
+	const PriceSet= new Set()
+	const SizeSet= new Set()
+	
+	useEffect(() => {
+		if(crocsList) {
+			filterCrocsList();
+		}
+	}, [crocsList])
+
+	const filterCrocsList = () => {
+		crocsList.forEach((element:any) => {
+			ModelSet.add(element.model);
+			PriceSet.add(element.price);
+			SizeSet.add(element.size);
+		});
+		console.log(ModelSet)
+		console.log(PriceSet)
+		console.log(SizeSet)
+		setModelList(Array.from(ModelSet))
+		setPriceList(Array.from(PriceSet))
+		setSizeList(Array.from(SizeSet))
+	}
 	return (
 		<div className='mt-10 flex items-center justify-between'>
 			<div>
@@ -10,54 +37,30 @@ const CrocsFiltersOption = () => {
 				</h2>
 				<h2>Смотрите модели по вашим предпочтениям</h2>
 			</div>
-			<div className='flex gap-5'>
-				<select className="select select-bordered w-full max-w-xs">
- 					<option disabled selected>По модели</option>
- 					<option>Мужские</option>
- 					<option>Женские</option>
-					<option>Детские</option>
+
+			<div className='flex gap-3'>
+				<select className="select select-bordered w-full max-w-xs"
+					onChange = {(e) => setModel(e.target.value)}>
+ 					<option disabled selected>модель</option>
+					{modelList && modelList.map((model: string, index: number)=> (
+						<option key={index}>{model}</option>
+					))}
 				</select>
-				<select className="select select-bordered w-full md:block max-w-xs hidden">
- 					<option disabled selected>По цене</option>
- 					<option>Дороже</option>
- 					<option>Дешевле</option>
+
+				<select className="select select-bordered w-full md:block max-w-xs"
+				onChange = {(e) => setPrise(e.target.value)}>
+ 					<option disabled selected>цена</option>
+					 {priceList && priceList.map((prise: string, index: number)=> (
+						<option key={index}>{prise}</option>
+					))}
 				</select>
-				<select className="select select-bordered w-full md:block max-w-xs hidden">
- 					<option disabled selected>По размеру</option>
- 					<option>18</option>
- 					<option>19</option>
-					<option>20</option>
- 					<option>21</option>
-					<option>22</option>
- 					<option>23</option>
-					<option>24</option>
- 					<option>25</option>
-					<option>18</option>
- 					<option>19</option>
-					<option>20</option>
- 					<option>21</option>
-					<option>22</option>
- 					<option>23</option>
-					<option>24</option>
- 					<option>25</option>
-					<option>26</option>
- 					<option>27</option>
-					<option>28</option>
- 					<option>29</option>
-					<option>30</option>
- 					<option>31</option>
-					<option>32</option>
- 					<option>33</option>
-					<option>34</option>
- 					<option>35</option>
-					<option>36</option>
- 					<option>37</option>
-					<option>38</option>
- 					<option>39</option>
-					<option>40</option>
- 					<option>41</option>
-					<option>42</option>
- 					<option>43</option>
+
+				<select className="select select-bordered w-full md:block max-w-xs"
+				onChange = {(e) => setSize(e.target.value)}>
+ 					<option disabled selected>размер</option>
+					 {sizeList && sizeList.map((size: string, index: number)=> (
+						<option key={index}>{size}</option>
+					))}
 				</select>
 			</div>
 		</div>
