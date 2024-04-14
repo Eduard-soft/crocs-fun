@@ -21,9 +21,9 @@ function CrocsFiltersOption({crocsList, setModel, setPrise, setSize}:any) {
 			PriceSet.add(element.price);
 			SizeSet.add(element.size);
 		});
-		console.log(ModelSet)
-		console.log(PriceSet)
-		console.log(SizeSet)
+		// console.log(ModelSet)
+		// console.log(PriceSet)
+		// console.log(SizeSet)
 		setModelList(Array.from(ModelSet))
 		setPriceList(Array.from(PriceSet))
 		setSizeList(Array.from(SizeSet))

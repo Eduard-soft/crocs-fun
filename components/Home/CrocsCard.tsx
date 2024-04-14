@@ -18,7 +18,7 @@ function CrocsCard(props:any) {
 		hover:border-orange-500 cursor-pointer duration-100'>
 			<div className='text-center text-gray-500'>
 				<WiHot className='w-full text-[22px] md-2'/>
-				<h2 className='line-clamp-5 text-[34px] font-light'>{crocs.name}</h2>
+				<h2 className='line-clamp-5 text-[30px] font-light'>{crocs.name}</h2>
 				<div>
 					<h2 className='line-clamp-1 text-[24px] font-light'>{crocs.model}</h2>
 				</div>
